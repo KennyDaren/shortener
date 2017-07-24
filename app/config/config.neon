@@ -1,0 +1,62 @@
+parameters:
+	security:
+		salt: "7FsaFFnw24cs7SFsaFFnXa" #must be 22 chars long
+php:
+	date.timezone: Europe/Prague
+
+application:
+	errorPresenter: Error
+	mapping:
+		"*": "Shortener\\*\\*Presenter"
+	scanComposer: false
+	scanDirs: false
+
+session:
+	expiration: 7 days
+	autoStart: true
+
+extensions:
+	console: Kdyby\Console\DI\ConsoleExtension
+	events: Kdyby\Events\DI\EventsExtension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+	translator: Kdyby\Translation\DI\TranslationExtension
+	doctrineMapper: DoctrineMapper\DI\DoctrineMapperExtension
+	eventDispatcher: Symnedi\EventDispatcher\DI\EventDispatcherExtension
+	migrations: Zenify\DoctrineMigrations\DI\MigrationsExtension
+	rabbitmq: Kdyby\RabbitMq\DI\RabbitMqExtension
+	redis: Kdyby\Redis\DI\RedisExtension
+
+services:
+	webRouterFactory: Shortener\Web\WebRouterFactory
+	routerFactory: Shortener\Router\RouterFactory
+	router: @Shortener\Router\RouterFactory::createRouter
+	cache: Nette\Caching\Cache
+
+	# Latte
+	latteHelpers:
+		class: Shortener\Templating\LatteHelpers
+
+	# authorization
+	passwordHash: Shortener\Security\PasswordHash(%security.salt%)
+	authenticator: Shortener\Security\Authenticators\WebAuthenticator
+
+	acl: Shortener\Security\ACL
+
+	geoip: GeoIp2\Database\Reader(%configuration.geoDatabaseCity%)
+	browsecap: BrowscapPHP\Browscap
+
+redis:
+	journal: on
+	storage: on
+	session: on
+
+includes:
+	- system/console.config.neon
+	- system/domain.config.neon
+	- system/facade.config.neon
+	- system/factory.config.neon
+	- system/configuration.config.neon
+	- doctrine.config.neon
+	- migrations.config.neon
+	- system/rabbitmq.config.neon

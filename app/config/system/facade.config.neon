@@ -1,0 +1,8 @@
+services:
+	#doctrine
+	UserDoctrineFacade: Shortener\Facade\Users\UserFacade
+	LinkDoctrineFacade: Shortener\Facade\Link\Doctrine\LinkFacade
+	StatsDoctrineFacade: Shortener\Facade\Stats\StatsFacade
+
+	#logic
+	LinkFacade: Shortener\Facade\Link\LinkFacade

@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.htaccess
+!web.config
+!sessions/.gitignore
+!proxies/.gitignore
+!files/.gitignore

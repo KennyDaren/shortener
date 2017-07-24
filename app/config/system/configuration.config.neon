@@ -1,0 +1,13 @@
+parameters:
+	configuration:
+		minPasswordLength: 8
+		urlHashCharacters: 'ZYXWVUTSRQPONMLKJIHGFEDCBAabcdefghijklmnopqrstuvwxyz0987654321'
+		linkCacheExpiration: '+ 1 day'
+		geoDatabaseCity: '%appDir%/../data/GeoLite2-City.mmdb'
+		devLocalIPs: ['34.208.47.183', '90.90.42.214', '103.200.5.143']
+
+services:
+	Configuration:
+		class: Shortener\Configuration\Configuration
+		arguments:
+			- %configuration%

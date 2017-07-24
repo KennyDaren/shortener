@@ -1,0 +1,312 @@
+@color_1: #777;
+
+@blue: #11597F;
+@blueB: #3B6C8B;
+@gray: #E5E5E5;
+@sandyellow: #C7BDA2;
+@rose: #D3CAC8;
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+	background-color: @blueB;
+	font-family: Roboto, sans-serif;
+}
+
+.header {
+	color: @rose;
+	padding-right: 1rem;
+	padding-left: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: .05rem solid #e5e5e5;
+	h1 {
+		font-size: 2.5em;
+		margin-top: 0;
+		margin-bottom: 0;
+		//line-height: 2.7em;
+	}
+
+	a {
+		color: @rose;
+		&:hover {
+			text-decoration: none;
+			color: @sandyellow;
+		}
+	}
+}
+
+.marketing {
+	padding-right: 1rem;
+	padding-left: 1rem;
+	margin: 3rem 0;
+	p {
+		& + h4 {
+			margin-top: 1.5rem;
+		}
+	}
+}
+
+.footer {
+	padding-right: 1rem;
+	padding-left: 1rem;
+	padding-top: 1.5rem;
+	color: @sidebar_;
+	border-top: .05rem solid #e5e5e5;
+}
+
+.container-narrow {
+	> hr {
+		margin: 2rem 0;
+	}
+}
+
+.jumbotron {
+	text-align: center;
+	border-bottom: .05rem solid #e5e5e5;
+	.btn {
+		padding: .75rem 1.5rem;
+		font-size: 1.5rem;
+	}
+	.lead {
+		margin-top: 0.7em;
+	}
+
+	h2 {
+		color: @blue;
+	}
+}
+
+//media
+@media (min-width: 48em) {
+	.container {
+		max-width: 46rem;
+	}
+}
+
+@media screen and (min-width: 48em) {
+	.header {
+		padding-right: 0;
+		padding-left: 0;
+		margin-bottom: 2rem;
+	}
+
+	.marketing {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.footer {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.jumbotron {
+		border-bottom: 0;
+	}
+}
+
+.nav-pills {
+	color: @rose;
+
+	&.active {
+		background: @rose;
+		color: @blueB;
+	}
+
+	.nav-link {
+		&:hover {
+			color: @sandyellow;
+		}
+	}
+}
+
+.jumbotron {
+	input[type=text] {
+		height: 1.5em;
+		font-size: 2.5em;
+		width: 100%;
+	}
+}
+
+.btn {
+	&.btn-primary {
+		background-color: @sandyellow;
+		border-color: @sandyellow;
+		color: @blue;
+		&:hover {
+			background-color: @rose;
+			border-color: @rose;
+		}
+	}
+
+	&.btn-success {
+		background-color: @blue;
+		border-color: @blue;
+		color: @sandyellow;
+
+		&:hover {
+			background-color: @blueB;
+			border-color: @blueB;
+		}
+	}
+}
+
+.form-box {
+	padding: 1rem;
+	margin-bottom: 2rem;
+	background-color: #eceeef;
+	border: 4px solid #eceeef;
+	border-radius: .3rem;
+	&:target {
+		border: 4px solid @sandyellow;
+		transition: border-color 1s ease-out;
+	}
+}
+
+@sidebar_: #999999;
+@sidebar: #fff;
+
+/* Sidebar Styles */
+#wrapper {
+	padding-left: 0;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+	padding-left: 250px;
+	#sidebar-wrapper {
+		width: 250px;
+	}
+	#page-content-wrapper {
+		position: absolute;
+		margin-right: -250px;
+	}
+}
+
+#sidebar-wrapper {
+	z-index: 1000;
+	position: fixed;
+	left: 250px;
+	width: 0;
+	height: 100%;
+	margin-left: -250px;
+	overflow-y: auto;
+	background: #000;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+#page-content-wrapper {
+	width: 100%;
+	position: absolute;
+	padding: 15px;
+}
+
+.sidebar-nav {
+	position: absolute;
+	top: 0;
+	width: 250px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	li {
+		text-indent: 20px;
+		line-height: 40px;
+		a {
+			display: block;
+			text-decoration: none;
+			color: @sidebar_;
+			&:hover {
+				text-decoration: none;
+				color: @sidebar;
+				background: rgba(255, 255, 255, 0.2);
+			}
+			&:active {
+				text-decoration: none;
+			}
+			&:focus {
+				text-decoration: none;
+			}
+		}
+	}
+	> .sidebar-brand {
+		height: 65px;
+		font-size: 18px;
+		line-height: 60px;
+		a {
+			color: @sidebar_;
+			&:hover {
+				color: @sidebar;
+				background: none;
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	#wrapper {
+		padding-left: 0;
+	}
+
+	#wrapper.toggled {
+		padding-left: 250px;
+		#sidebar-wrapper {
+			width: 250px;
+		}
+		#page-content-wrapper {
+			position: relative;
+			margin-right: 0;
+		}
+	}
+
+	#sidebar-wrapper {
+		width: 0;
+	}
+
+	#page-content-wrapper {
+		padding: 20px;
+		position: relative;
+	}
+}
+
+.alert {
+	border-color: transparent;
+	border-radius: 0;
+	color: #ffffff;
+	padding: 10px 15px;
+}
+
+.alert .close {
+	text-shadow: 0 0;
+	color: #fff;
+	right: 0;
+	margin-right: 0;
+}
+
+.alert-success {
+	background-color: #c02026;
+}
+
+.alert-info {
+	background-color: #00578E;
+
+}
+
+.alert-warning {
+	background-color: #EC7A01;
+}
+
+.alert-danger,
+.alert-error {
+	color: #E9EDEF;
+	background-color: #D43D3D;
+}
+
+.alert-dark {
+	background-color: #676767;
+}

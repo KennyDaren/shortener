@@ -1,0 +1,29 @@
+doctrine:
+	#metadataCache: redis
+	#queryCache: redis
+	#resultCache: redis
+	#hydrationCache: redis
+	console: true
+	driver: pdo_mysql
+	host: localhost
+	user: root
+	password: changeme
+	dbname: changeme
+	charset: utf8
+	metadata:
+		Shortener: %appDir%/src
+	proxyDir: %tempDir%/proxies
+	proxyNamespace: Shortener\Domain\Proxies
+	autoGenerateProxyClasses: true
+	dql:
+		datetime:
+			datediff: DoctrineExtensions\Query\Mysql\DateDiff
+			date: DoctrineExtensions\Query\Mysql\Date
+			month: DoctrineExtensions\Query\Mysql\Month
+			year: DoctrineExtensions\Query\Mysql\Year
+		string:
+			group_concat: DoctrineExtensions\Query\Mysql\GroupConcat
+			ToTsquery: Opsway\Doctrine\ORM\Query\AST\Functions\ToTsquery
+			ToTsvector: Opsway\Doctrine\ORM\Query\AST\Functions\ToTsvector
+		numeric:
+			random: DoctrineExtensions\Query\Mysql\Rand

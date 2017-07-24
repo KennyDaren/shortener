@@ -1,0 +1,10 @@
+services:
+	UserRepository:
+		class: Shortener\Domain\User\UserRepository
+		factory: @Kdyby\Doctrine\EntityManager::getRepository(Shortener\Domain\User\UserEntity)
+	LinkRepository:
+		class: Shortener\Domain\Link\LinkRepository
+		factory:  @Kdyby\Doctrine\EntityManager::getRepository(Shortener\Domain\Link\LinkEntity)
+	StatsRepository:
+		class: Shortener\Domain\Stats\StatsRepository
+		factory: @Kdyby\Doctrine\EntityManager::getRepository(Shortener\Domain\Stats\StatsEntity)

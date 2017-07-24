@@ -1,0 +1,130 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Just small app">
+	<meta name="author" content="Hynek Nerad">
+	<link rel="icon" href="{$basePath}/favicon.ico">
+
+	<title>{ifset #title}{include title} | {/ifset} Shortener</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="{$basePath}/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="{$basePath}/css/custom.css" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+	      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
+</head>
+
+<body>
+<div id="wrapper">
+
+	{if $user->isLoggedIn()}
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li class="sidebar-brand">
+					<a n:href=":Web:Homepage:default"><i class="fa fa-link fa-2x"></i>
+						<span class="hidden-sm-down"> Shortener</span></a>
+				</li>
+				<li>
+					<a n:href=":Web:Homepage:default">Home</a>
+				</li>
+				<li>
+					<a n:href=":Web:User:Links:list">Your links</a>
+				</li>
+				<li>
+					<a href="#">Settings</a>
+				</li>
+				<li n:if="$user->isAllowed(Shortener\Security\ACL::RESOURCE_USERS, Shortener\Security\ACL::ACTION_LIST)">
+					<a href="#">Users</a>
+				</li>
+				<li n:if="$user->isAllowed(Shortener\Security\ACL::RESOURCE_ADMINS, Shortener\Security\ACL::ACTION_LIST)">
+					<a href="#">Admins</a>
+				</li>
+			</ul>
+		</div>
+		<!-- /#sidebar-wrapper -->
+	{/if}
+
+	<!-- Page Content -->
+	<div id="page-content-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="container">
+						<div class="header clearfix">
+							<nav>
+								<ul class="nav nav-pills float-right">
+
+									{if !$user->isLoggedIn()}
+										<li class="nav-item">
+											<a class="nav-link" n:href=":Web:Homepage:default#log-in">Log in</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" n:href=":Web:Homepage:default#sign-up">Sign up</a>
+										</li>
+									{else}
+										<li class="nav-item">
+											<a id="menu-toggle" class="align-bottom">
+												<i class="fa fa-bars fa-2x"></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">{$user->identity->username}</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" n:href=":Web:Homepage:logOut">Logout</a>
+										</li>
+									{/if}
+								</ul>
+							</nav>
+							<h1><a n:href=":Web:Homepage:default"><i class="fa fa-link"></i>
+									<span class="hidden-sm-down"> Shortener</span></a></h1>
+						</div>
+
+						<div n:snippet="flashes" class="alert">
+							{if count($flashes) > 0}
+								<div n:foreach="$flashes as $flash" class="alert-item alert-{$flash->type}">
+									<div class="container">
+										<i class="icon-alert-{$flash->type} mr5"></i>
+										<span>{$flash->message|noescape}</span>
+										<span class="alert-close"><i class="icon-close-circle"></i></span>
+									</div>
+								</div>
+							{/if}
+						</div>
+						{include content}
+
+						<footer class="footer">
+							<p>© Shortener 2017{if date('Y') != '2017'} - {date('Y')}{/if}</p>
+						</footer>
+
+					</div> <!-- /container -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="{$basePath}/js/nette.ajax.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+<script src="{$basePath}/js/clipboard.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<script src="{$basePath}/js/custom.js"></script>
+</body>
+</html>

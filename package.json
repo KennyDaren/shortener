@@ -1,0 +1,10 @@
+{
+  "name": "shortner",
+  "version": "1.0.0",
+  "description": "Just shortener demo app",
+  "author": "Hynek Nerad <iam@kennydaren.me>",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-less": "^1.4.1"
+  }
+}

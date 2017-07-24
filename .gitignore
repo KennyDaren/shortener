@@ -1,0 +1,5 @@
+app/config/local.config.neon
+.idea/
+/nbproject/private/
+/.vagrant/
+/node_modules/

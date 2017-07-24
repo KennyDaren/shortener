@@ -1,0 +1,10 @@
+<table class="table table-striped table-hover">
+	<tbody n:inner-foreach="$data as $row">
+	{breakIf !isset($row[0]) || empty($row[0])}
+	<tr>
+		<td class="text-center"><a href="{$row[0]|linkDetailLink}"><i class="fa fa-line-chart text-right"></i>  {$row[0]->hash}</a></td>
+		<td class="text-center"><a target="_blank" href="{$baseUrl}/{$row[0]->hash}">{$row[0]->url}</a></td>
+		<td class="text-right">{$row['statsCount']|number}</td>
+	</tr>
+	</tbody>
+</table>

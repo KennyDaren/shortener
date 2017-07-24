@@ -1,0 +1,9 @@
+console:
+	name: Shortener
+	version: prod
+	url: 'https://shortener.li/'
+
+services:
+	userCreateCommand:
+		class: Shortener\Commands\User\CreateCommand
+		tags: [kdyby.console.command]

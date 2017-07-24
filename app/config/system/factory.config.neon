@@ -1,0 +1,6 @@
+services:
+	ILinkShortenerControlFactory: Shortener\Web\Controls\LinkShortener\ILinkShortenerControlFactory
+	ILinkListControlFactory: Shortener\Web\Controls\LinkList\ILinkListControlFactory
+	ILinkGraphControlFactory: Shortener\Web\Controls\LinkGraph\ILinkGraphControlFactory
+	ISignInControlFactory: Shortener\Web\Controls\Sign\In\ISignInControlFactory
+	ISignUpControlFactory: Shortener\Web\Controls\Sign\Up\ISignUpControlFactory

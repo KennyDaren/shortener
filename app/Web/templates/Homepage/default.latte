@@ -1,0 +1,21 @@
+{block content}
+	<div class="jumbotron" id="short-it">
+		{control linkShortener}
+	</div>
+	<div class="row form-box">
+		<h4>Top 10 of {if $user->isLoggedIn()}yours{else}anonymous{/if} most redirects</h4>
+		{control linkList}
+	</div>
+	{if !$user->isLoggedIn()}
+		<div class="row marketing form-box">
+			<div class="col-lg-6" id="log-in">
+				<h4>Log in</h4>
+				{control login}
+			</div>
+			<div class="col-lg-6" id="sign-up">
+				<h4>Sign up</h4>
+				{control register}
+			</div>
+		</div>
+	{/if}
+{/block}

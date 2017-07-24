@@ -1,0 +1,25 @@
+<form n:name="form" method="post" role="form">
+	<div class="form-group">
+		<!--suppress HtmlFormInputWithoutLabel -->
+		<input class="form-control" n:name="email">
+		{$form['email']->getError()}
+	</div>
+	<div class="form-group">
+		<!--suppress HtmlFormInputWithoutLabel -->
+		<input class="form-control" n:name="username">
+		{$form['username']->getError()}
+	</div>
+	<div class="form-group">
+		<!--suppress HtmlFormInputWithoutLabel -->
+		<input class="form-control" n:name="password">
+		{$form['password']->getError()}
+	</div>
+	<div class="form-group">
+		<!--suppress HtmlFormInputWithoutLabel -->
+		<input class="form-control" n:name="password2">
+		{$form['password2']->getError()}
+	</div>
+
+
+	<button n:name="submit" class="btn btn-primary btn-block">Sign up</button>
+</form>

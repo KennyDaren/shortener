@@ -1,0 +1,39 @@
+{block content}
+	<div class="row form-box">
+		<div class="col-lg-12">
+			<h2>{$row->hash} <i class="fa fa-arrow-circle-o-right"></i>
+				<a href="{$baseUrl}/{$row->hash}">{$row->url}</a></h2>
+		</div>
+		<div class="col-lg-12">
+			{var $redirectCount = Shortener\DataSource\LinkGraphDataSource::DATASET_REDIRECTS_COUNT}
+
+			<div class="float-lg-left">
+				Total redirects:
+			</div>
+			<div class="float-lg-right">
+				{control graphControl-$redirectCount}
+			</div>
+		</div>
+		<div class="col-lg-12">
+			{var $last7days = Shortener\DataSource\LinkGraphDataSource::DATASET_LAST_7DAYS_REDIRECTS}
+			{control graphControl-$last7days}
+		</div>
+		<div class="col-lg-6">
+			{var $device = Shortener\DataSource\LinkGraphDataSource::DATASET_DEVICE}
+			{control graphControl-$device}
+		</div>
+		<div class="col-lg-6">
+			{var $platform = Shortener\DataSource\LinkGraphDataSource::DATASET_PLATFORM}
+			{control graphControl-$platform}
+		</div>
+		<div class="col-lg-6">
+			{var $browser = Shortener\DataSource\LinkGraphDataSource::DATASET_BROWSER}
+			{control graphControl-$browser}
+		</div>
+		<div class="col-lg-6">
+			{var $referer = Shortener\DataSource\LinkGraphDataSource::DATASET_REFERER}
+			{control graphControl-$referer}
+		</div>
+
+	</div>
+{/block}

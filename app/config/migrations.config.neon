@@ -1,0 +1,4 @@
+migrations:
+	table: "db_versions"
+	directory: "%appDir%/migrations"
+	namespace: "Shortener\\Migrations"

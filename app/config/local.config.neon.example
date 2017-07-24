@@ -1,0 +1,25 @@
+parameters:
+	configuration:
+		devLocalIPs: ['34.208.47.183', '90.90.42.214', '103.200.5.143'] #set empty for production
+		geoDatabaseCity: '%appDir%/../data/GeoLite2-City.mmdb'
+
+nette:
+	debugger:
+		email: # -> enter admin mail here
+
+doctrine:
+	host: localhost
+	user:
+	password:
+	dbname:
+
+console:
+	url: 'https://shortener.sk/'
+
+rabbitmq:
+	connection:
+		host: localhost
+		port: 5672
+		user: 'guest'
+		password: 'guest'
+		vhost: '/'
